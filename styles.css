@@ -1120,6 +1120,35 @@ body {
     color: var(--text-dim);
 }
 
+/* ===== Floating WhatsApp (sticky, always visible) ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+    color: #fff;
+}
+
+.whatsapp-float svg {
+    display: block;
+}
+
 /* ===== Modals ===== */
 .modal-overlay {
     position: fixed;
@@ -1765,6 +1794,17 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+    .product-card {
+        animation: none;
+    }
+    .products-grid .product-card:nth-child(n) {
+        animation-delay: unset;
+    }
+    .nav-bg {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: var(--nav-bg);
+    }
     .menu-toggle {
         display: flex;
     }

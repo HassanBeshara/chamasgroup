@@ -26,6 +26,7 @@ const PRODUCTS_PER_PAGE_MOBILE = 12;
 // Order and contact emails go to this address
 const ORDER_EMAIL = 'Moudishamas333@gmail.com';
 const WHISH_MONEY_NUMBER = '81490397';
+const WHATSAPP_NUMBER = (typeof window !== 'undefined' && window.WHATSAPP_NUMBER) || '96181490397'; // Country code + number, no + or spaces
 
 // State: cart is array of { product, quantity }
 let products = [];
@@ -226,6 +227,10 @@ window.deleteProduct = async function (id) {
 
 // Init
 document.addEventListener('DOMContentLoaded', async () => {
+    var waLink = document.getElementById('whatsappLink');
+    if (waLink) {
+        waLink.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('plz i need to make order');
+    }
     setupThemeToggle();
     try {
         [products, _categoriesCache] = await Promise.all([apiGetProducts(), apiGetCategories()]);
@@ -240,7 +245,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     currentPage = 1;
     displayProductsPage();
     setupMenuToggle();
-    window.addEventListener('resize', displayProductsPage);
+    (function () {
+        var lastPerPage = getProductsPerPage();
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                var perPage = getProductsPerPage();
+                if (perPage !== lastPerPage) {
+                    lastPerPage = perPage;
+                    displayProductsPage();
+                }
+            }, 150);
+        });
+    })();
     setupNavbarScroll();
     setupScrollAnimations();
     setupModals();

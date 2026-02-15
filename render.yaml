@@ -1,0 +1,10 @@
+# Render one-click deploy
+# Connect your repo at render.com and it will use this config
+
+services:
+  - type: web
+    name: mhmd-chamas
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free

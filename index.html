@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mhmd Chamas — Curated Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-bg"></div>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">Mhmd Chamas</a>
+                <div class="nav-right-group">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" type="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#products" class="nav-link">Shop</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#policies" class="nav-link">Policies</a></li>
+                    <li class="nav-admin" id="navAdmin" style="display: none;">
+                        <button type="button" class="nav-link btn-link" id="btnManageCategories" onclick="window.openCategoriesModal && window.openCategoriesModal();">Categories</button>
+                    </li>
+                    <li class="nav-auth">
+                        <button type="button" class="btn btn-ghost btn-sm" id="btnLogin" onclick="window.openLoginModal && window.openLoginModal(); return false;">Login</button>
+                        <button type="button" class="btn btn-ghost btn-sm" id="btnLogout" style="display: none;" onclick="window.doLogout && window.doLogout(); return false;">Logout</button>
+                    </li>
+                </ul>
+                <div class="nav-right-icons">
+                    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Change theme">
+                        <span class="theme-icon theme-icon-dark" aria-hidden="true">☀️</span>
+                        <span class="theme-icon theme-icon-light" aria-hidden="true" style="display: none;">🌙</span>
+                    </button>
+                    <div class="cart-icon" aria-label="Cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-glow hero-glow-1"></div>
+            <div class="hero-glow hero-glow-2"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-label">Curated for you</p>
+            <h1 class="hero-title">Quality you can<br><em>feel</em></h1>
+            <p class="hero-subtitle">Handpicked products, honest prices. Your next favorite is right here.</p>
+            <a href="#products" class="btn btn-primary">
+                <span>Explore collection</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-label">Catalog</span>
+                <h2 class="section-title">Our Products</h2>
+                <button type="button" class="btn btn-primary btn-add-product" id="btnAddProduct" style="display: none;" onclick="window.openProductForm && window.openProductForm();">Add product</button>
+            </header>
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-category="all">All</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-label">Who we are</span>
+                <h2 class="section-title">About Mhmd Chamas</h2>
+            </header>
+            <div class="about-content">
+                <p>We're a small team that cares about what you buy. Every item is chosen for quality and value. No clutter, no hype—just things we'd recommend to a friend.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-label">Get in touch</span>
+                <h2 class="section-title">Contact</h2>
+            </header>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <textarea name="message" placeholder="Your message" rows="4" required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send message</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies -->
+    <section class="policies-section" id="policies">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-label">Legal</span>
+                <h2 class="section-title">Policies</h2>
+            </header>
+            <div class="policies-grid">
+                <div class="policy-card">
+                    <div class="policy-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="policy-title">Privacy Policy</h3>
+                    <p class="policy-text">We collect only what we need to process your order and get in touch. We do not sell your data. Your name, phone, and address are used only for delivery and support.</p>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3 class="policy-title">Terms of Use</h3>
+                    <p class="policy-text">By using Mhmd Chamas you agree to order in good faith. Prices and availability may change. We reserve the right to refuse or cancel orders when necessary.</p>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h3 class="policy-title">Shipping & Returns</h3>
+                    <p class="policy-text">We deliver to the address you provide. Payment is collected on delivery. If an item arrives damaged or wrong, contact us and we will work to fix it.</p>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 class="policy-title">Exchange Policy</h3>
+                    <p class="policy-text">Our online exchange policy is valid for 14 days after the date of purchase. No exchanges will be made after this time. In case you need to exchange, your item must be returned unused and in its original packaging. To exchange a product, kindly drop us an email on <a href="mailto:Moudishamas333@gmail.com">Moudishamas333@gmail.com</a> stating the reason for your exchange, and we will communicate a return address.</p>
+                    <p class="policy-text">Customized items cannot be exchanged. Swimwear cannot be exchanged. Items on sale cannot be exchanged. Return shipping costs are at the client's expense.</p>
+                    <p class="policy-text"><strong>Refunds are not accepted.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-payment">
+                <span class="footer-payment-label">We accept</span>
+                <div class="footer-payment-logos">
+                    <a href="https://www.whish.money/" target="_blank" rel="noopener noreferrer" class="payment-logo payment-logo-whish" title="Whish Money">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_Whish_Money_%28Lebanon%29.png" alt="Whish Money" class="payment-logo-img">
+                    </a>
+                    <span class="payment-logo" title="Pay on delivery">
+                        <svg class="payment-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        <span>Pay on delivery</span>
+                    </span>
+                </div>
+            </div>
+            <nav class="footer-links" aria-label="Footer links">
+                <a href="#policies">Policies</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p class="footer-text">&copy; 2024 Mhmd Chamas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product detail modal -->
+    <div class="modal-overlay" id="productModal" aria-hidden="true">
+        <div class="modal modal-product" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+            <button type="button" class="modal-close" id="closeProductModal" aria-label="Close">&times;</button>
+            <div class="modal-product-layout">
+                <div class="modal-product-image" id="productModalImage"></div>
+                <div class="modal-product-info">
+                    <p class="product-category" id="productModalCategory"></p>
+                    <h2 class="modal-product-title" id="productModalTitle"></h2>
+                    <p class="modal-product-desc" id="productModalDesc"></p>
+                    <p class="modal-product-price" id="productModalPrice"></p>
+                    <div class="product-detail-qty">
+                        <label class="form-label" for="productModalQty">Quantity</label>
+                        <input type="number" id="productModalQty" min="1" value="1" class="qty-input">
+                    </div>
+                    <div class="modal-product-actions">
+                        <button type="button" class="btn btn-outline" id="productModalAddCart">Add to cart</button>
+                        <button type="button" class="btn btn-primary" id="productModalPayDelivery">
+                            <span>Checkout</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout modal -->
+    <div class="modal-overlay" id="checkoutModal" aria-hidden="true">
+        <div class="modal modal-checkout" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+            <button type="button" class="modal-close" id="closeCheckoutModal" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="checkoutModalTitle">Checkout</h2>
+            <p class="modal-subtitle" id="checkoutSubtitle">Enter your details and choose payment method.</p>
+            <div class="checkout-items" id="checkoutItems"></div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="payment-methods">
+                    <div class="payment-segmented">
+                        <label class="payment-segment">
+                            <input type="radio" name="paymentMethod" value="whish" checked>
+                            <span class="payment-segment-label">Whish Money</span>
+                        </label>
+                        <label class="payment-segment">
+                            <input type="radio" name="paymentMethod" value="delivery">
+                            <span class="payment-segment-label">Pay on delivery</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="whish-info" id="whishInfo">
+                    <div class="whish-card">
+                        <div class="whish-card-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_Whish_Money_%28Lebanon%29.png" alt="Whish Money" class="whish-logo">
+                            <span class="whish-badge">E-Wallet</span>
+                        </div>
+                        <p class="whish-instruction">Send payment to this number after placing your order:</p>
+                        <div class="whish-number-row">
+                            <span class="whish-number" id="whishNumber">81490397</span>
+                            <button type="button" class="whish-copy-btn" id="whishCopyBtn" aria-label="Copy number">Copy</button>
+                        </div>
+                        <a href="https://www.whish.money/" target="_blank" rel="noopener noreferrer" class="whish-open-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open Whish Money
+                        </a>
+                    </div>
+                </div>
+                <input type="text" name="fullName" placeholder="Full name" required>
+                <input type="tel" name="phone" placeholder="Phone number" required>
+                <input type="text" name="address" placeholder="Delivery address" required>
+                <input type="text" name="city" placeholder="City" required>
+                <textarea name="notes" placeholder="Notes (optional)" rows="2"></textarea>
+                <button type="submit" class="btn btn-primary btn-block" id="checkoutSubmitBtn">
+                    <span id="checkoutSubmitText">Confirm order — Whish Money</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login modal -->
+    <div class="modal-overlay" id="loginModal" aria-hidden="true">
+        <div class="modal modal-auth" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button type="button" class="modal-close" id="closeLoginModal" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="loginModalTitle">Admin login</h2>
+            <p class="modal-subtitle">Sign in to add or edit products and categories.</p>
+            <form class="auth-form" id="loginForm" onsubmit="window.doLogin(); return false;">
+                <input type="text" id="loginUsername" name="username" placeholder="Username" required autocomplete="username">
+                <input type="password" id="loginPassword" name="password" placeholder="Password" required autocomplete="current-password">
+                <button type="button" class="btn btn-primary btn-block" id="btnSignIn" onclick="window.doLogin();">Sign in</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manage categories modal -->
+    <div class="modal-overlay" id="categoriesModal" aria-hidden="true">
+        <div class="modal modal-categories" role="dialog" aria-modal="true" aria-labelledby="categoriesModalTitle">
+            <button type="button" class="modal-close" id="closeCategoriesModal" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="categoriesModalTitle">Manage categories</h2>
+            <form class="category-form" id="addCategoryForm" onsubmit="window.handleAddCategory(event); return false;">
+                <input type="text" name="categoryName" id="categoryNameInput" placeholder="New category name" required>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            <ul class="category-list" id="categoryList"></ul>
+        </div>
+    </div>
+
+    <!-- Add/Edit product modal -->
+    <div class="modal-overlay" id="productFormModal" aria-hidden="true">
+        <div class="modal modal-form" role="dialog" aria-modal="true" aria-labelledby="productFormModalTitle">
+            <button type="button" class="modal-close" id="closeProductFormModal" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="productFormModalTitle">Add product</h2>
+            <form class="product-form" id="productForm">
+                <input type="hidden" name="productId" id="productFormId" value="">
+                <input type="text" name="name" id="productNameInput" placeholder="Product name" required>
+                <select name="category" id="productFormCategory" required></select>
+                <input type="number" name="price" id="productPriceInput" placeholder="Price" step="0.01" min="0" required>
+                <textarea name="description" id="productDescInput" placeholder="Description" rows="3" required></textarea>
+                <label class="form-label">Product image <span class="form-required" id="productImageRequiredLabel">(required — upload from your computer)</span></label>
+                <div class="product-image-options">
+                    <input type="file" id="productImageUpload" accept="image/*" class="upload-input-visible">
+                </div>
+                <div class="product-image-preview" id="productImagePreview"></div>
+                <button type="button" class="btn btn-primary btn-block" id="btnSaveProduct" onclick="if(window.handleSaveProduct)window.handleSaveProduct(event);">Save product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
